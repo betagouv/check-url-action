@@ -1,4 +1,5 @@
 const { default: fetch } = require("node-fetch");
+const core = require("@actions/core");
 
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
@@ -29,10 +30,10 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
 
   function checkStatus(response) {
     var grade = "F";
-    console.log("Response:", response)
+    core.info("Response OK:" + response.ok)
     if (response.ok) {
-      console.log("exactExpectedRegex", exactExpectedRegex)
-      console.log("minExpectedRegex", minExpectedRegex)
+      core.info("exactExpectedRegex " + exactExpectedRegex)
+      core.info("minExpectedRegex " + minExpectedRegex)
       if (uri.match(exactExpectedRegex)) {
         grade = "A";
       } else if (uri.match(minExpectedRegex)) {
