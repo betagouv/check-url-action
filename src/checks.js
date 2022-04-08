@@ -29,7 +29,10 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
 
   function checkStatus(response) {
     var grade = "F";
+    console.log("Response:", response)
     if (response.ok) {
+      console.log("exactExpectedRegex", exactExpectedRegex)
+      console.log("minExpectedRegex", minExpectedRegex)
       if (uri.match(exactExpectedRegex)) {
         grade = "A";
       } else if (uri.match(minExpectedRegex)) {
