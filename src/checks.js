@@ -34,9 +34,9 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
     if (response.ok) {
       core.info("exactExpectedRegex " + exactExpectedRegex)
       core.info("minExpectedRegex " + minExpectedRegex)
-      if (uri.match(exactExpectedRegex)) {
+      if (uri.match(new RegExp(exactExpectedRegex))) {
         grade = "A";
-      } else if (uri.match(minExpectedRegex)) {
+      } else if (uri.match(new RegExp(minExpectedRegex))) {
         grade = "B";
       } else {
         grade = "F";
