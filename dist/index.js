@@ -4348,6 +4348,7 @@ module.exports.implForWrapper = function (wrapper) {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const { default: fetch } = __nccwpck_require__(467);
+const core = __nccwpck_require__(186);
 
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
@@ -4378,7 +4379,10 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
 
   function checkStatus(response) {
     var grade = "F";
+    core.info("Response OK:" + response.ok)
     if (response.ok) {
+      core.info("exactExpectedRegex " + exactExpectedRegex)
+      core.info("minExpectedRegex " + minExpectedRegex)
       if (uri.match(exactExpectedRegex)) {
         grade = "A";
       } else if (uri.match(minExpectedRegex)) {
