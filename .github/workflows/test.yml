@@ -33,9 +33,11 @@ jobs:
       - name: checks https://beta.gouv.fr/stats
         uses: ./
         with:
-          url: https://beta.gouv.fr
-          uri: 'stats'
+          baseUrl: https://beta.gouv.fr
+          uri: stats
           output: stats.json
+          minExpectedRegex: /^stat/
+          exactExpectedRegex: /^stats$/
       - name: test output
         run: |
           echo $(cat stats.json)

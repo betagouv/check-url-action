@@ -5,9 +5,18 @@ branding:
   icon: 'activity'  
   color: 'green'
 inputs:
-  url:
-    description: 'The complete URL to check'
+  baseUrl:
+    description: 'The base URL to check'
     required: true
+  uri:
+    description: 'The URI to check'
+    required: true
+  minExpectedRegex:
+    description: 'The minimum regex that the URI must match to obtain a good grade'
+    required: false 
+  exactExpectedRegex:
+    description: 'The regex that the URI must match to obtain the maximum grade'
+    required: false
   output:
     description: 'Filename for stats reports'
     default: 'url_status.json'

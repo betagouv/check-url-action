@@ -11,11 +11,12 @@ jobs:
     steps:
       - uses: "beta.gouv/check-url-action@main"
         with:
-          url: https://beta.gouv.fr/stats
-          output: 'stats.json'
+          baseUrl: https://beta.gouv.fr
+          uri: stats
+          output: stats.json
 ```
 
-You can choose output file name and the URL you want to check.
+You can choose output file name and the URL and URI you want to check.
 
 See [action.yml](action.yml) for details and default inputs.
 
