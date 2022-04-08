@@ -1,0 +1,18 @@
+name: "Checks URL action"
+description: "Checks page status from url"
+author: 'Benoit Serrano'
+branding:
+  icon: 'activity'  
+  color: 'green'
+inputs:
+  url:
+    description: 'The complete URL to check'
+    required: true
+  output:
+    description: 'Filename for stats reports'
+    default: 'url_status.json'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+      
