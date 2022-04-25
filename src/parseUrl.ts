@@ -1,9 +1,7 @@
-const urlParser = require("url-parse")
+export { parseUrl }
 
-module.exports = parseUrl;
-
-function parseUrl(url) {
-    const parsedUrl = urlParser(url);
+function parseUrl(url: string) {
+    const parsedUrl = new URL(url);
 
     let uri = parsedUrl.pathname;
     if (uri[0] === "/") {

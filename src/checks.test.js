@@ -3,7 +3,7 @@ fetchMock.config.overwriteRoutes = true;
 const nodeFetch = require('node-fetch');
 nodeFetch.default = fetchMock;
 
-const checks = require("./checks");
+const { checks } = require("../dist/checks");
 
 describe("should checks stats", () => {
   const minExpectedRegex = /^stat/;

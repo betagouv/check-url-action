@@ -1,4 +1,4 @@
-const parseUrl = require("./parseUrl");
+const { parseUrl } = require("../dist/parseUrl");
 
 describe("parseUrl", () => {
     test("should correctly parse a simple URL", () => {
