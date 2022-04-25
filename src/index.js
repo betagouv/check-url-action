@@ -5,13 +5,12 @@ const checks = require("./checks");
 
 async function run() {
   try {
-    const baseUrl = core.getInput("baseUrl");
-    const uri = core.getInput("uri");
+    const url = core.getInput("url");
     const output = core.getInput("output");
     const exactExpectedRegex = core.getInput("exactExpectedRegex")
     const minExpectedRegex = core.getInput("minExpectedRegex")
-    core.info(`Fetching page ${baseUrl}/${uri}...`);
-    const results = await checks(baseUrl, uri, { exactExpectedRegex, minExpectedRegex });
+    core.info(`Fetching page ${url}...`);
+    const results = await checks(url, { exactExpectedRegex, minExpectedRegex });
     fs.writeFileSync(output, JSON.stringify(results));
   } catch (error) {
     core.setFailed(error.message);

@@ -1,4 +1,5 @@
 const { default: fetch } = require("node-fetch");
+const parseUrl = require("./parseUrl");
 
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
@@ -19,9 +20,9 @@ class HTTPResponseError extends Error {
  *
  * @returns {Promise<HttpScanResult>}
  */
-const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) => {
-  const url = encodeURI(`${baseUrl}/${uri}`);
+const checks = async (url, { minExpectedRegex, exactExpectedRegex }) => {
   const response = await fetch(url)
+  const { baseUrl, uri } = parseUrl(url);
   return checkStatus(response);
 
 
@@ -46,7 +47,6 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
       }
     }
   }
-
 };
 
 module.exports = checks;

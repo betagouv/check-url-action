@@ -5,11 +5,8 @@ branding:
   icon: 'activity'  
   color: 'green'
 inputs:
-  baseUrl:
-    description: 'The base URL to check'
-    required: true
-  uri:
-    description: 'The URI to check'
+  url:
+    description: 'The URL to check'
     required: true
   minExpectedRegex:
     description: 'The minimum regex that the URI must match to obtain a good grade'
