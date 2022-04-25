@@ -26,22 +26,27 @@ const checks = async (baseUrl, uri, { minExpectedRegex, exactExpectedRegex }) =>
 
 
   function checkStatus(response) {
-    var grade = "F";
-    if (response.ok) {
-      if (uri.match(new RegExp(exactExpectedRegex))) {
-        grade = "A";
-      } else if (uri.match(new RegExp(minExpectedRegex))) {
-        grade = "B";
+    const grade = getGrade(response)
+
+    return { grade, url: baseUrl, uri };
+
+    function getGrade() {
+      if (response.ok) {
+        if (!exactExpectedRegex || uri.match(new RegExp(exactExpectedRegex))) {
+          return "A";
+        } else if (!minExpectedRegex || uri.match(new RegExp(minExpectedRegex))) {
+          return "B";
+        } else {
+          return "C";
+        }
+      } else if (response.status < 500) {
+        return "F";
       } else {
-        grade = "F";
+        throw new HTTPResponseError(response);
       }
-    } else if (response.status < 500) {
-      grade = "F";
-    } else {
-      throw new HTTPResponseError(response);
     }
-    return { grade: grade, url: baseUrl, uri };
   }
+
 };
 
 module.exports = checks;

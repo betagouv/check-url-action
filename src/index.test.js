@@ -26,12 +26,12 @@ describe("should checks stats", () => {
     expect(result).toEqual(expectedJson);
   });
 
-  test("should return grade F with toto uri", async () => {
-    const expectedJson = { "grade": "F", "url": "https://toto.beta.gouv.fr", "uri": "toto" };
+  test("should return grade C with toto uri", async () => {
+    const expectedJson = { "grade": "C", "url": "https://toto.beta.gouv.fr", "uri": "toto" };
     fetchMock.mock("https://toto.beta.gouv.fr/toto", expectedJson);
     const result = await checks("https://toto.beta.gouv.fr", "toto", { minExpectedRegex, exactExpectedRegex });
     expect(result.url).toEqual("https://toto.beta.gouv.fr");
-    expect(result.grade).toEqual("F");
+    expect(result.grade).toEqual("C");
     expect(result).toEqual(expectedJson);
   });
 
