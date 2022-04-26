@@ -2,9 +2,9 @@
   "name": "check-url-action",
   "version": "0.1.0",
   "description": "Github action that checks the presence of a specific page on url and report results as JSON.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc -p tsconfig.json",
     "lint": "eslint .",
     "test": "jest",
     "all": "npm run lint && npm run compile && npm run test"
