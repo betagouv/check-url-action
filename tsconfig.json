@@ -3,10 +3,21 @@
         "target": "es6",
         "module": "commonjs",
         "sourceMap": true,
-        "outDir": "./dist",
+        "outDir": "./lib",
         "strict": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "ES6",
+            "DOM"
+        ],
+        "rootDir": "./src"
     },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }
