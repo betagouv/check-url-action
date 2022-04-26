@@ -30,11 +30,11 @@ jobs:
       - name: Checkout Github
         uses: actions/checkout@v2
         if: ${{ !env.ACT }}
+      - run: npm install 
       - name: checks https://beta.gouv.fr/stats
         uses: ./
         with:
-          baseUrl: https://beta.gouv.fr
-          uri: stats
+          url: https://beta.gouv.fr/stats
           output: stats.json
           minExpectedRegex: ^stat
           exactExpectedRegex: ^stats$
