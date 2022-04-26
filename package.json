@@ -2,12 +2,13 @@
   "name": "check-url-action",
   "version": "0.1.0",
   "description": "Github action that checks the presence of a specific page on url and report results as JSON.",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "compile": "tsc -p tsconfig.json",
     "lint": "eslint .",
+    "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run lint && npm run compile && npm run test"
+    "all": "npm run compile && npm run lint && npm run package && npm test"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.31.1",
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
