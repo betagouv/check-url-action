@@ -1,13 +1,14 @@
+
 const fetchMock = require('fetch-mock').sandbox();
 fetchMock.config.overwriteRoutes = true;
 const nodeFetch = require('node-fetch');
 nodeFetch.default = fetchMock;
 
-const { checks } = require("../dist/checks");
+import { checks } from "./checks"
 
 describe("should checks stats", () => {
-  const minExpectedRegex = /^stat/;
-  const exactExpectedRegex = /^stats$/;
+  const minExpectedRegex = "^stat";
+  const exactExpectedRegex = "^stats$";
   test("should return grade A with stats uri", async () => {
     const expectedJson = { "grade": "A", "url": "https://toto.beta.gouv.fr", "uri": "stats" };
     fetchMock.mock("https://toto.beta.gouv.fr/stats", expectedJson);

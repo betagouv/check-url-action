@@ -1,8 +1,5 @@
 {
   "name": "check-url-action",
-  "jest": {
-    "resetMocks": true
-  },
   "version": "0.1.0",
   "description": "Github action that checks the presence of a specific page on url and report results as JSON.",
   "main": "src/index.js",
@@ -28,7 +25,12 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
     "@types/node-fetch": "^2.6.1",
+    "babel-jest": "^28.0.0",
     "eslint": "^7.29.0",
     "fetch-mock": "^9.11.0",
     "jest": "^27.0.5",
