@@ -6,7 +6,10 @@ export { checks }
 /**
  * Checks stats page for a given url
  */
-const checks = async (url: string, { minExpectedRegex, exactExpectedRegex }: { minExpectedRegex: string | undefined, exactExpectedRegex: string | undefined }) => {
+const checks = async (url: string | null, { minExpectedRegex, exactExpectedRegex }: { minExpectedRegex: string | undefined, exactExpectedRegex: string | undefined }) => {
+  if (!url) {
+    return { grade: "F", url: "", uri: "" }
+  }
   const response = await fetch(url)
   const { baseUrl, uri } = parseUrl(url);
   return checkStatus(response);
