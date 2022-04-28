@@ -26,6 +26,9 @@ const parseUrl_1 = __nccwpck_require__(654);
  * Checks stats page for a given url
  */
 const checks = (url, { minExpectedRegex, exactExpectedRegex }) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!url) {
+        return { grade: "F", url: "", uri: "" };
+    }
     const response = yield (0, node_fetch_1.default)(url);
     const { baseUrl, uri } = (0, parseUrl_1.parseUrl)(url);
     return checkStatus(response);
