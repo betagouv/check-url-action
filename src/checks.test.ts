@@ -52,4 +52,15 @@ describe("should checks stats", () => {
     expect(result.grade).toEqual("F");
     expect(result).toEqual(expectedJson);
   });
+
+
+  test("should return grade F if no url provided", async () => {
+    const expectedJson = { "grade": "F", "url": "", "uri": "" };
+
+    const result = await checks(null, { exactExpectedRegex, minExpectedRegex: undefined });
+
+    expect(result.url).toEqual("");
+    expect(result.grade).toEqual("F");
+    expect(result).toEqual(expectedJson);
+  });
 });
