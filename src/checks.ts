@@ -1,4 +1,5 @@
 import fetch, { Response } from "node-fetch"
+import * as core from "@actions/core"
 import { parseUrl } from "./parseUrl"
 
 export { checks }
@@ -10,8 +11,17 @@ const checks = async (url: string | null, { minExpectedRegex, exactExpectedRegex
   if (!url) {
     return { grade: "F", url: "", uri: "" }
   }
+  let baseUrl = "", uri = ""
+  try {
+    const parsedUrl = parseUrl(url);
+    baseUrl = parsedUrl.baseUrl;
+    uri = parsedUrl.uri;
+  } catch (error) {
+    core.error(`Error while trying to parse URL ${url}: ${error}`)
+    return { grade: "F", url, uri: "" }
+  }
+
   const response = await fetch(url)
-  const { baseUrl, uri } = parseUrl(url);
   return checkStatus(response);
 
 
