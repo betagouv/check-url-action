@@ -11,17 +11,17 @@ const checks = async (url: string | null, { minExpectedRegex, exactExpectedRegex
   if (!url) {
     return { grade: "F", url: "", uri: "" }
   }
-  let baseUrl = "", uri = ""
+  let baseUrl = "", uri = "", response;
   try {
     const parsedUrl = parseUrl(url);
     baseUrl = parsedUrl.baseUrl;
     uri = parsedUrl.uri;
+    response = await fetch(url);
   } catch (error) {
     core.error(`Error while trying to parse URL ${url}: ${error}`)
     return { grade: "F", url, uri: "" }
   }
 
-  const response = await fetch(url)
   return checkStatus(response);
 
 
