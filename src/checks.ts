@@ -8,7 +8,7 @@ export { checks }
  * Checks stats page for a given url
  */
 const checks = async (url: string | null, { minExpectedRegex, exactExpectedRegex }: { minExpectedRegex: string | undefined, exactExpectedRegex: string | undefined }) => {
-  if (!url) {
+  if (!url || url == "null") {
     return { grade: "F", url: "", uri: "" }
   }
   let baseUrl = "", uri = ""
