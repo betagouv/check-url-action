@@ -30,6 +30,9 @@ jobs:
       - name: Checkout Github
         uses: actions/checkout@v2
         if: ${{ !env.ACT }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - run: npm install 
       - name: checks https://beta.gouv.fr/stats
         uses: ./
