@@ -45,6 +45,7 @@ const checks = async (
     return { grade, url: baseUrl, uri };
 
     function getGrade() {
+      console.log("response: ok:", response.ok, "status:", response.status);
       if (response.ok) {
         if (!exactExpectedRegex || uri.match(new RegExp(exactExpectedRegex))) {
           return "A";
